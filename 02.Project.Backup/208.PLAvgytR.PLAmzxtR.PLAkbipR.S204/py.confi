@@ -1,0 +1,15 @@
+# ------------------------------ py.confi
+
+Main_Script_DIR='/public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline'
+
+Main_WK_DIR='/public/home/bgiadmin/Project/F21FTSSCKF9402/ANIqxmyR/02.Analysis/208.PLAvgytR.PLAmzxtR.PLAkbipR.S204'
+
+list_sample=["sc298_A", "sc299_A", "sc300_A", "sc301_A", "sc302_A", "sc303_A", "sc304_A", "sc305_A", "sc306_A", "sc307_A", "sc308_A", "sc309_A", "sc310_A", "sc312_A", "sc313_A", "sc314_A", "sc315_A", "sc316_A", "sc317_A", "sc318_A", "sc319_A", "sc320_A", "sc321_A", "sc322_A", "sc323_A", "sc324_A", "sc325_A", "sc326_A", "sc327_A", "sc328_A", "sc329_A", "sc330_A", "sc331_A", "sc332_A", "sc333_A", "sc334_A", "sc335_A", "sc336_A", "sc337_A", "sc338_A", "sc339_A", "sc340_A", "sc341_A", "sc342_A", "sc343_A", "sc344_A", "sc345_A", "sc346_A", "sc347_A", "sc348_A", "sc349_A", "sc350_A", "sc351_A", "sc352_A", "sc353_A", "sc354_A", "sc355_A", "sc356_A", "sc357_A", "sc358_A", "sc359_A", "sc360_A", "sc361_A", "sc362_A", "sc363_A", "sc364_A", "sc365_A", "sc366_A", "sc367_A", "sc368_A", "sc369_A", "sc370_A", "sc371_A", "sc372_A", "sc373_A", "sc374_A", "sc375_A", "sc376_A", "sc377_A", "sc378_A", "sc379_A", "sc380_A", "sc381_A", "sc382_A", "sc383_A", "sc384_A", "sc385_A", "sc386_A", "sc387_A", "sc388_A", "sc389_A", "sc390_A", "sc391_A", "sc392_A", "sc393_A", "sc394_A", "sc395_A", "sc396_A", "sc397_A", "sc398_A", "sc399_A", "sc400_A", "sc401_A", "sc402_A", "sc403_A", "sc404_A", "sc405_A", "sc406_A", "sc407_A", "sc408_A", "sc409_A", "sc410_A", "sc411_A", "sc412_A", "sc413_A", "sc414_A", "sc415_A", "sc416_A", "sc417_A", "sc418_A", "sc419_A", "sc420_A", "sc421_A", "sc422_A", "sc423_A", "sc424_A", "sc425_A", "sc426_A", "sc427_A", "sc428_A", "sc429_A", "sc430_A", "sc431_A", "sc432_A", "sc433_A", "sc434_A", "sc435_A", "sc436_A", "sc437_A", "sc438_A", "sc439_A", "sc440_A", "sc441_A", "sc442_A", "sc443_A", "sc444_A", "sc445_A", "sc446_A", "sc447_A", "sc448_A", "sc449_A", "sc450_A", "sc451_A", "sc452_A", "sc453_A", "sc454_A", "sc455_A", "sc456_A", "sc457_A", "sc458_A", "sc459_A", "sc460_A", "sc461_A", "sc462_A", "sc463_A", "sc464_A", "sc465_A", "sc466_A", "sc467_A", "sc468_A", "sc469_A", "sc470_A", "sc471_A", "sc472_A", "sc473_A", "sc474_A", "sc475_A", "sc476_A", "sc477_A", "sc478_A", "sc479_A", "sc480_A", "sc481_A", "sc482_A", "sc483_A", "sc484_A", "sc485_A", "sc486_A", "sc487_A", "sc488_A", "sc489_A", "sc490_A", "sc491_A", "sc492_A", "sc493_A", "sc494_A", "sc495_A", "sc496_A", "sc497_A", "sc498_A", "sc499_A", "sc500_A", "sc501_A", "sc311_A"]
+
+Group_list = ["G1"]    # fix
+
+Genome_Size_KB =  978972          # fix
+Project_Num = '208'                # fix
+
+# ------------------------------ py.confi
+

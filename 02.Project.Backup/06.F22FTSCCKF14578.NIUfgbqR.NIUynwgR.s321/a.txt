@@ -1,0 +1,4 @@
+echo -e "Start Time: \c";  date;  START_TIME=$SECONDS;
+echo -e "Start Time: b;  date;  START_TIME=$SECONDS;
+a
+

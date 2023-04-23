@@ -1,0 +1,9 @@
+# ------------------------------ sh.confi
+
+# workpath
+Main_WK_DIR=/public/home/bgiadmin/Project/F21FTSSCKF9402/ANIqxmyR/02.Analysis/202.PLAszhcR.S988.GaoLiang
+# declare array
+declare -a Group_List;
+Group_List=(G1);                    # fix
+
+# ------------------------------ sh.confi

@@ -1,0 +1,9 @@
+#!/bin/bash
+#SBATCH -J $S01_Step02_Job_Name.${sample}  # fix:任务名
+#SBATCH -p hfacexclu03,hfacexclu02    # 队列
+#SBATCH -N 1            # 节点数
+#SBATCH -n 8            # 进程数
+#SBATCH -c 1            # 线程数
+#SBATCH --mem=3800MB        # 内存，int
+#SBATCH -o ./l01.log/flt.${sample}.%j.o      # fix:path
+#SBATCH -e ./l01.log/flt.${sample}.%j.e      # fix:path

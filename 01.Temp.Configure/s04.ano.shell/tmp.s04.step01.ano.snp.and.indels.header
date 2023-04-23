@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH -J Ano   # fix:任务名
+#SBATCH -p hfacexclu03,hfacexclu02    # 队列
+#SBATCH -N 1            # 节点数
+#SBATCH -n 4            # 进程数
+#SBATCH -c 1            # 线程数
+#SBATCH --mem=16g        # 内存，int
+#SBATCH --time=14-00:00:00
+#SBATCH -o ./ano.%j.o      # fix:path
+#SBATCH -e ./ano.%j.e      # fix:path

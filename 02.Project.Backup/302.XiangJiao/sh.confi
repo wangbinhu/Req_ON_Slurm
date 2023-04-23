@@ -1,0 +1,9 @@
+# ------------------------------ sh.confi
+
+# workpath
+Main_WK_DIR=/public/home/bgiadmin/Project/F21FTSCCKF6737_RESbeigR/project/XiangJiao/reseq/09.new
+# declare array
+declare -a Group_List;
+Group_List=(G1);                    # fix
+
+# ------------------------------ sh.confi

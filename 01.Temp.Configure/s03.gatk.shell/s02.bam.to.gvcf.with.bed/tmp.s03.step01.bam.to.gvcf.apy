@@ -1,0 +1,40 @@
+# ------------------------------------------------------------------------------------------------------------------------------ tmp.s03.step01.bam.to.gvcf.apy:
+import csv
+import subprocess
+import time
+import sys
+import os
+import pandas as pd
+
+
+# fix
+Shell_File = S03_Step01_OU_PATH + '/s03.step01.bam.to.gvcf.sh'
+Log_Dir = S03_Step01_OU_PATH + '/l01.log'                                         # touch:Log_Dir
+df1 = pd.read_table('add.list', sep='.', header=None)      # FIX
+
+os.chdir(S03_Step01_OU_PATH)
+#  add.list:
+for i in range(df1.shape[0]):
+    sample = df1.iloc[i][0]
+    chr = df1.iloc[i][1]
+    # print("{}  {}".format(sample, chr))
+
+    fi = open(Shell_File,encoding = "utf-8")
+    fo = open("t.s03.step01.bam.to.gvcf.sh","w",encoding = "utf-8")
+    string = fi.read()
+    string1 = string.replace('${sample}', sample).replace('$CHR_NUM', chr)
+    fo.write(string1)
+    fi.close()
+    fo.close()
+
+    # 提交任务：
+    qsub_cmd = 'sbatch t.s03.step01.bam.to.gvcf.sh'
+    exit_status = subprocess.call(qsub_cmd, shell=True)
+    if exit_status == 1:
+        print('Job "{}" failed to submit'.format(qsub_cmd))
+    else:
+	i+=1
+        print("The {}st task submit success!".format(i))
+# os.remove('t.s03.step01.bam.to.gvcf.sh')
+print("Done submitting jobs!")
+# ------------------------------------------------------------------------------------------------------------------------------tmp.s03.step01.bam.to.gvcf.apy

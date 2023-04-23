@@ -1,0 +1,35 @@
+----------------------------------------------------------------------------------------------------------- /public/software/modules ------------------------------------------------------------------------------------------------------------
+apps/abacus/2.1.0-impi-2017                         apps/molcas/intelmpi/21.20                          compiler/cmake/3.20.5                               mathlib/hdf5/intel/1.8.20
+apps/abinit/intelmpi/8.6.1                          apps/namd/hpc-2.4.1-gcc-7.3.1/2.15                  compiler/devtoolset/7.3.1                           mathlib/hdf5/intelmpi/1.12.0
+apps/arps/intelmpi/5.3.4                            apps/namd/intelmpi/2.10                             compiler/dtk/21.04                                  mathlib/hdf5/intelmpi/1.12.0-pf
+apps/cmake/3.21.0                                   apps/NwChem/intel/intelmpi/6.8.1                    compiler/dtk/21.10.1                                mathlib/jasper/1.900.1/intel
+apps/cmaq/intelmpi/4.7.1                            apps/NwChem/intel/intelmpi/7.0.2                    compiler/dtk/22.04.1                                mathlib/lapack/gnu/3.10.0
+apps/cp2k/intelmpi/4.1                              apps/OpenFOAM/OpenFOAM-8                            compiler/dtk/22.04.2                                mathlib/lapack/intel/3.10.0
+apps/cp2k/intelmpi/5.1                              apps/orca/openmpi/5.0.0                             compiler/gcc/10.3.0                                 mathlib/libpng/1.2.50/intel
+apps/cp2k/intelmpi/7.1                              apps/orca/openmpi/5.0.1                             compiler/gcc/4.9.0                                  mathlib/libxc/5.1.3/impi2018.4.274
+apps/cp2k/intelmpi/7.1-new                          apps/orca/openmpi/5.0.2                             compiler/gcc/4.9.3                                  mathlib/mpc/1.0.2
+apps/cp2k/intelmpi/8.1-2020                         apps/p7zip/9.20.1                                   compiler/gcc/8.4.0                                  mathlib/mpfr/4.1.0
+apps/cp2k/intelmpi/9.1-2018                         apps/ParaView/5.8.0                                 compiler/gcc/9.3.0                                  mathlib/ncl_ncarg/6.5.0/gnu
+apps/cp2k/intelmpi/9.1-2020                         apps/plumed2/intelmpi/2.6.3                         compiler/intel/intel-compiler-2017.5.239            mathlib/netcdf/intel/4.1.3
+apps/cp2k/intelmpi/9.1-2021                         apps/plumed2/intelmpi/2.9.0                         compiler/intel/intel-compiler-2018.5.274            mathlib/netcdf/intel/4.4.1
+apps/cp2k/intelmpi/9.1-plumed                       apps/python/2.7.10                                  compiler/intel/intel-compiler-2020.1.217            mathlib/netcdf/intelmpi/4.7.4
+apps/fvcom/intelmpi/2.7.1                           apps/python/2.7.12                                  compiler/intel/intel-compiler-2021.2.0              mathlib/pio/intelmpi/2.3.1
+apps/Gaussian/g16-avx2                              apps/python/3.7.11                                  compiler/intel/intel-compiler-2021.3.0              mathlib/pnetcdf/1.12.1/intel
+apps/gromacs/2019.5/hpcx-2.4.1-intel2017            apps/pytorch/1.7/openmpi-2.1.2-gcc-7.3.1-dtk21.04   compiler/rocm/2.9.0                                 mathlib/pnetcdf/1.12.2/intelmpi
+apps/gromacs/intelmpi/5.1.3                         apps/pytorch/1.8/pytorch_1.8-rocm_4.0.1             compiler/rocm/3.9.1                                 mathlib/szip/intel/2.1.1
+apps/gromacs-DCU/2020.3/hpcx-v2.4.1-gcc-7.3.1       apps/pytorch/1.9/pytorch_1.9-rocm_4.0.1             compiler/rocm/4.0.1                                 mathlib/zlib/1.2.8/intel
+apps/lammps/16Mar18-intelmpi-2017/avx2+fftw+voronoi apps/quantum-espresso/intelmpi/6.2                  mathlib/boost/1.66.0-impi-2017                      mpi/hpcx/2.4.1/gcc-7.3.1
+apps/lammps/22Aug18-intelmpi-2017/avx2+fftw+voronoi apps/quantum-espresso/intelmpi/6.4.1                mathlib/elpa/2016.05.004/impi-2017                  mpi/hpcx/2.4.1/intel-2017.5.239
+apps/lammps/24Dec20-intelmpi-2017/avx2+fftw+voronoi apps/quantum-espresso/intelmpi/6.7                  mathlib/elpa/2019.05.001/intel2020                  mpi/hpcx/2.4.1/intel-2017.5.239-back
+apps/lammps/30Jul21-intelmpi-2017/avx2+fftw+voronoi apps/quantum-espresso/intelmpi/7.0                  mathlib/elpa/2019.05.001/intel2021                  mpi/intelmpi/mpi/2017.4.239
+apps/lammps/3Mar20-intelmpi-2017/avx2+fftw+voronoi  apps/R/3.2.1                                        mathlib/fftw/gnu/3.3.8_float                        mpi/intelmpi/mpi/2018.4.274-new
+apps/lammps/5Jun19-intelmpi-2017/avx2+fftw+voronoi  apps/singularity/3.7.3                              mathlib/fftw/intelmpi/3.3.4-impi-2017               mpi/intelmpi/mpi/2020.1.217
+apps/lammps/7Aug19-intelmpi-2017/avx2+fftw+voronoi  apps/tensorflow/2.3.3/tensorflow_2.3.3-rocm_3.9.1   mathlib/fftw/intelmpi/3.3.7_double                  mpi/intelmpi/mpi/2021.2.0
+apps/lammps/8Apr21-intelmpi-2017/avx2+fftw+voronoi  apps/tensorflow/2.5/tensorflow_2.5-dtk_21.04        mathlib/fftw/intelmpi/3.3.7_float                   mpi/intelmpi/mpi/2021.3.0
+apps/lammps/intelmpi/14May16                        apps/vaspkit/1.2.4/vaspkit1.2.4                     mathlib/gmp/6.2.1                                   mpi/openmpi/gcc/4.1.1
+apps/lammps/intelmpi/29Oct20                        apps/WIEN2k/intelmpi/WIEN2k_21.1                    mathlib/gsl/2.7.1/gun                               mpi/openmpi/intel/2.1.2
+apps/lammps/intelmpi/29Oct20+avx2+fftw              apps/wrf/intelmpi/3.8.1                             mathlib/hdf5/intel/1.8.12
+
+----------------------------------------------------------------------------------------------------------- /opt/hpc/software/modules -----------------------------------------------------------------------------------------------------------
+compiler/devtoolset/7.3.1   compiler/intel/2017.5.239   compiler/rocm/3.3           compiler/rocm/4.3           mpi/intelmpi/2018.4.274     mpi/openmpi/2.1.2/gcc-7.3.1
+
