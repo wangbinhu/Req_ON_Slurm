@@ -15,7 +15,7 @@ $perl    $Add_VCF_AnoVV    $S06_Step02_OU_PATH/SV.merge.vcf.v2.ano    $S06_Step0
 
 echo $S06_Step02_OU_PATH/FinaSV.vcf > $S06_Step02_OU_PATH/SV.merge.vcf.gz.list
 
-$perl   $Add_VCF_AnoVV   $S06_Step02_OU_PATH/SV.merge.vcf.gz.list   >   $S06_Step02_OU_PATH/SV.anno.stat 
+$perl   $AnoStat   $S06_Step02_OU_PATH/SV.merge.vcf.gz.list   >   $S06_Step02_OU_PATH/SV.anno.stat 
 
 # 统计SV变异结果：
 

@@ -7,3 +7,5 @@
 #SBATCH --mem=3800MB        # 内存，int
 #SBATCH -o ./l01.log/flt.${sample}.%j.o      # fix:path
 #SBATCH -e ./l01.log/flt.${sample}.%j.e      # fix:path
+
+echo -e "Start Time:      \c";  date;  START_TIME=$SECONDS;

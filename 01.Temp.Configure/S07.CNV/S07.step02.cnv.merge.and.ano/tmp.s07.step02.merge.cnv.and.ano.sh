@@ -16,7 +16,7 @@ perl    $Add_VCF_AnoVV    $S07_Step02_OU_PATH/CNV.merge.vcf.v2.ano    $S07_Step0
 
 echo $S07_Step02_OU_PATH/FinaCNV.vcf > $S07_Step02_OU_PATH/CNV.merge.vcf.gz.list
 
-perl    $AnoStat    $S07_Step02_OU_PATH/CNV.merge.vcf.gz.list    >    $S07_Step02_OU_PATH/SUS.s66.cnv.anno.stat 
+perl    $AnoStat    $S07_Step02_OU_PATH/CNV.merge.vcf.gz.list    >    $S07_Step02_OU_PATH/CNV.anno.stat 
 
 
 # 统计CNV变异结果：
