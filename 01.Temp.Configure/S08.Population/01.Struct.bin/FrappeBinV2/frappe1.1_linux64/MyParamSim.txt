@@ -1,0 +1,13 @@
+GenotypeFile  ="simdata.ped" ## Mandatory genotype file name
+MaxIter=  10000    ## maximum number of EM iterations
+K      =  3  ## Number of ancestral individuals
+M      = 200  ## Number of markers
+I      =  280  ## Number of individuals;
+step   =  200 ### Define either step or Nout
+Nout   =  0
+IndividualFile = "simIndfile.txt"  ### Optional file 
+printP	= 1	## optional 
+threshold= 10000  ## optional convergence threshold
+
+
+

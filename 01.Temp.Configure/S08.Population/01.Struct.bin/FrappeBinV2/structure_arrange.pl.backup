@@ -1,0 +1,53 @@
+#!/usr/bin/perl-w
+use strict;
+#explanation:this program is edited to
+#edit by HeWeiMing;   Mon Sep 27 16:52:22 CST 2010
+#Version 1.0    hewm@genomics.org.cn
+
+die  "Version 1.0\t2010-09-27;\nUsage: $0 <ID.list><plink.out.list><Out>\n"unless(@ARGV ==3);
+
+#############Befor  Start  , open the files ####################
+
+
+    open (List ,  "<$ARGV[0]") || die "$!";
+    open (Flist , "<$ARGV[1]") || die "$!" ;
+    open (OUT ,   ">$ARGV[2]") || die "$!";
+
+
+    my %Sample=();
+    while(<List>)  # individual.txt
+    {
+        chomp ;
+        my @inf=split ;
+        $Sample{$inf[0]}=$inf[1];  #  R574 => CC_R574
+    }
+    close  List ;
+
+
+
+    my %Pvalue=();
+    while ($_=<Flist>)    # plink.out.list
+    {
+         chomp ;
+         my $file=$_ ;      # /hwfssz4/BC_COM_P5/F21FTSCCKF10022/CAMzqajR/07.population.s602/05.frappe/l02.log/plink_2_result.txt
+         open (Fi ,"$file") || die "$!" ;
+         my $K=$1 if ($file =~/plink_(\S+)_result.txt/);  # $1匹配第一对圆括号匹配的数字
+         while ($_=<Fi>)
+         {
+             chomp ;
+             my @inf=split /\:/ ;   # R574 R574 : 0.83689 0.16311
+             my $ID=(split(/\s+/,$inf[0]))[0];   # R574
+             my @temp=split(/\s+/,$inf[-1]);   # 0.942737 0.0572627
+             my $line=join("\t",@temp[0..$#temp]);  # 0.942737\t0.0572627
+             my $KP="K=$K\t$Sample{$ID}$line\t"; # K=2\tCC_R574\t0.942737\t0.0572627
+             $Pvalue{$ID}.=$KP;  # R574 =>  K=2\tCC_R574\t0.942737\t0.0572627  精华： $Pvalue{$ID}.=$KP
+        close Fi ;
+    }
+    close Flist ;
+
+
+   foreach  my $k (sort {$a<=>$b} keys %Pvalue)    # R574
+    {
+        print OUT $k,"\t$Pvalue{$k}\n";    
+    }
+   close OUT ;

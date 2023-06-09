@@ -1,7 +1,4 @@
 # ------------------------------ sh.confi
-echo -e "Start Time: \c";  date;  START_TIME=$SECONDS;
-
-
 # workpath
 Main_WK_DIR=/public/home/bgiadmin/Project/F21FTSSCKF9402/ANIqxmyR/02.Analysis/208.PLAvgytR.PLAmzxtR.PLAkbipR.S204
 # declare array

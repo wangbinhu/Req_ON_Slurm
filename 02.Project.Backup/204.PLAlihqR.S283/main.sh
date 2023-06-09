@@ -1,16 +1,27 @@
 # Reseq pipeline for Slurm systems
-# Time： 2022-11-02 09:04
+# Time： 2023-04-13 16:11
 # Address: hefei JY
 
 
 # --------------------------------  main.sh
+echo -e "Start Time: \c";  date;  START_TIME=$SECONDS;
 
-source    /public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline/00.Bin.Cofigure.Start/.config/sh.config
-source    /public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline/00.Bin.Cofigure.Start/sh.confi
 Main_Script_DIR=/public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline
 
+source    /public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline/00.Bin.Cofigure.Start/sh.confi
 
 # ------------------------------------------------------------------------------------------------------------------------------ S01  filter clean  data:
+
+# vcftools
+export LD_PRELOAD=/public/software/compiler/gcc/gcc-9.3.0/lib64/libstdc++.so.6:$LD_PRELOAD
+export PATH=/public/home/bgiadmin/Software/08.ReqTools/vcftools/bin:$PATH
+
+# python：
+export PATH=/public/home/bgiadmin/Software/Python/Python-3.8.5/bin:$PATH
+export LD_LIBRARY_PATH=/public/home/bgiadmin/Software/Python/Python-3.8.5/lib:$LD_LIBRARY_PATH
+
+
+
 # S01.step00: touch dir
 mkdir -p $Main_WK_DIR/01.Filter/01.raw.data
 mkdir -p $Main_WK_DIR/01.Filter/02.process/01.clean.data.l12.q0.5.n0.1
@@ -20,12 +31,12 @@ cat    $Main_Script_DIR/00.Bin.Cofigure.Start/sh.confi    $Main_Script_DIR/00.Bi
 cat    $Main_Script_DIR/00.Bin.Cofigure.Start/py.confi    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.g    >    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config
 
 # S01.step01: touch in and cat script
-cat        $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config     $Main_Script_DIR/01.Temp.Configure/s01.soapnuke.shell/tmp.script/tmp.s01.step01.ln.cat.py      >      $Main_WK_DIR/01.Filter/01.raw.data/s01.step01.ln.cat.py
-/public/home/bgi_wangbinhu/anaconda3/bin/python    $Main_WK_DIR/01.Filter/01.raw.data/s01.step01.ln.cat.py >  $Main_WK_DIR/01.Filter/01.raw.data/s01.step01.ln.cat.sh;
+cat        $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config     $Main_Script_DIR/01.Temp.Configure/s01.soapnuke.shell/tmp.script/tmp.s01.step01.ln.cat.py      >    $Main_WK_DIR/01.Filter/01.raw.data/s01.step01.ln.cat.py
+/public/home/bgiadmin/Software/Python/Python-3.8.5/bin/python3.8    $Main_WK_DIR/01.Filter/01.raw.data/s01.step01.ln.cat.py >  $Main_WK_DIR/01.Filter/01.raw.data/s01.step01.ln.cat.sh;
 
 # S01.step02: soapnuke filter script
 cat     $Main_Script_DIR/01.Temp.Configure/s01.soapnuke.shell/tmp.s01.step02.soapnuke.filter.header     $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/s01.soapnuke.shell/tmp.script/tmp.s01.step02.soapnuke.filter.sh    >    $Main_WK_DIR/01.Filter/02.process/s01.step02.soapnuke.filter.sh
-cat     $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/s01.soapnuke.shell/tmp.script/tmp.s01.step02.soapnuke.filter.py    >    $Main_WK_DIR/01.Filter/02.process/s01.step02.soapnuke.filter.py
+cat     $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/s01.soapnuke.shell/tmp.script/tmp.s01.step02.soapnuke.filter.py>    $Main_WK_DIR/01.Filter/02.process/s01.step02.soapnuke.filter.py
 # ------------------------------------------------------------------------------------------------------------------------------ S01  filter clean  data:
 
 
@@ -37,8 +48,13 @@ mkdir    -p    $Main_WK_DIR/02.bwa/l01.log;
 # S02.step01: touch script
 cat    $Main_Script_DIR/01.Temp.Configure/s02.bwa.shell/tmp.s02.step01.clean.to.dup.bam.header   $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/s02.bwa.shell/tmp.s02.step01.clean.to.rmdup.bam.sh    >    $Main_WK_DIR/02.bwa/s02.step01.clean.to.rmdup.bam.sh;
 cat    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/s02.bwa.shell/tmp.s02.step01.clean.to.rmdup.bam.py      >    $Main_WK_DIR/02.bwa/s02.step01.clean.to.rmdup.bam.py;
+
 # ------------------------------------------------------------------------------------------------------------------------------ S02 clean to bam
 
+source /public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline/00.Bin.Cofigure.Start/.config/sh.config
+
+sed  -i '1i\echo -e "Start Time: \\c";  date;  START_TIME=$SECONDS;' /public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline/00.Bin.Cofigure.Start/.config/sh.config
+sed -i '1s/^/\n\n/' /public/home/bgiadmin/Software/10.User-defined/WBH/02.reseq.pipeline/00.Bin.Cofigure.Start/.config/sh.config
 
 # ------------------------------------------------------------------------------------------------------------------------------ S03 bam to gvcf:
 mkdir    -p    $S03_Step01_OU_PATH
@@ -69,8 +85,8 @@ cat    $Main_Script_DIR/01.Temp.Configure/s03.gatk.shell/s02.bam.to.gvcf.with.be
 
 # S03.step04: bed.gvcf.to.genome.gvcf:   2022-09-21 15:36
 mkdir  -p   $S03_Step04_OU_PATH/l01.log
-cat    $Main_Script_DIR/01.Temp.Configure/s03.gatk.shell/s02.bam.to.gvcf.with.bed/tmp.s03.step03.bed.gvcf.to.genome.gvcf.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/s03.gatk.shell/s02.bam.to.gvcf.with.bed/tmp.s03.step04.bed.gvcf.to.genome.gvcf.sh    >    $S03_Step04_OU_PATH/s03.step04.bed.gvcf.to.genome.gvcf.sh ;
-cat    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/s03.gatk.shell/s02.bam.to.gvcf.with.bed/tmp.s03.step04.bed.gvcf.to.genome.gvcf.py    >    $S03_Step04_OU_PATH/s03.step04.bed.gvcf.to.genome.gvcf.py ;
+cat    $Main_Script_DIR/01.Temp.Configure/s03.gatk.shell/s02.bam.to.gvcf.with.bed/tmp.s03.step03.bed.gvcf.to.genome.gvcf.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/s03.gatk.shell/s02.bam.to.gvcf.with.bed/tmp.s03.step04.bed.gvcf.to.genome.gvcf.sh    >    $S03_Step04_OU_PATH/s03.step04.bed.gvcf.to.genome.gvcf.sh;
+cat    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/s03.gatk.shell/s02.bam.to.gvcf.with.bed/tmp.s03.step04.bed.gvcf.to.genome.gvcf.py>    $S03_Step04_OU_PATH/s03.step04.bed.gvcf.to.genome.gvcf.py ;
 # ------------------------------------------------------------------------------------------------------------------------------ S03 bam to gvcf
 
 
@@ -134,19 +150,46 @@ cat    $Main_Script_DIR/01.Temp.Configure/S06.SV/S06.step02.sv.merge.and.ano/tmp
 
 # ------------------------------------------------------------------------------------------------------------------------------ S07 CNV and ano:
 
-## s06.step01.bam.to.cnv:
+## s07.step01.bam.to.cnv:
 mkdir -p  $S07_Step01_OU_PATH
 mkdir -p  $S07_Step01_OU_PATH/l01.log
 mkdir -p  $S07_Step02_OU_PATH
 
 cat    $Main_Script_DIR/01.Temp.Configure/S07.CNV/S07.step01.bam.to.cnv/tmp.s07.step01.bam.to.cnv.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S07.CNV/S07.step01.bam.to.cnv/tmp.s07.step01.bam.to.cnv.sh     >    $S07_Step01_OU_PATH/s07.step01.bam.to.cnv.sh ;
-cat    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/S07.CNV/S07.step01.bam.to.cnv/tmp.s07.step01.bam.to.cnv.py     >    $S07_Step01_OU_PATH/s07.step01.bam.to.cnv.py ;
-
-## s06.step02.merge.cnv.and.ano:
+cat    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/S07.CNV/S07.step01.bam.to.cnv/tmp.s07.step01.bam.to.cnv.py     >$S07_Step01_OU_PATH/s07.step01.bam.to.cnv.py ;
+## s07.step02.merge.cnv.and.ano:
 cat    $Main_Script_DIR/01.Temp.Configure/S07.CNV/S07.step02.cnv.merge.and.ano/tmp.s07.step02.merge.cnv.and.ano.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S07.CNV/S07.step02.cnv.merge.and.ano/tmp.s07.step02.merge.cnv.and.ano.sh     >    $S07_Step02_OU_PATH/s07.step02.merge.cnv.and.ano.sh ;
-
 # ------------------------------------------------------------------------------------------------------------------------------ S07 CNV and ano
 
+
+# ------------------------------------------------------------------------------------------------------------------------------ S08 08.population:
+
+mkdir -p  $S08_OU_PATH/00.pre.population  $S08_OU_PATH/01.LD.Decay  $S08_OU_PATH/02.PHYLIPNEW.Fneighbor.Tree  $S08_OU_PATH/03.Admixture $S08_OU_PATH/03.Admixture/log $S08_OU_PATH/04.PCA
+
+# --------------------------------------------------------------- S08.Step00 Pre.Population:
+cat    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.step00.Pre.Population/S08.step00.Pre.Population.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.step00.Pre.Population/tmp.S08.step00.Pre.Population.sh     >    $S08_Step00_OU_PATH/S08.step00.Pre.Population.sh;
+# --------------------------------------------------------------- S08.Step00 Pre.Population
+
+# --------------------------------------------------------------- S08.Step01.LD.Decay:
+cat    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step01.LD.Decay/S08.Step01.LD.Decay.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step01.LD.Decay/tmp.S08.Step01.LD.Decay.sh     >    $S08_Step01_OU_PATH/S08.Step01.LD.Decay.sh;
+cp     $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step01.LD.Decay/S08.Step01.Plot.LD.Decay.r    $S08_Step01_OU_PATH/
+# --------------------------------------------------------------- S08.Step01.LD.Decay
+
+# --------------------------------------------------------------- S08.Step02.PHYLIPNEW.Fneighbor.Tree:
+cat    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step02.PHYLIPNEW.Fneighbor.Tree/S08.Step02.PHYLIPNEW.Fneighbor.Tree.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step02.PHYLIPNEW.Fneighbor.Tree/tmp.S08.Step02.PHYLIPNEW.Fneighbor.Tree.sh     >    $S08_Step02_OU_PATH/S08.Step02.PHYLIPNEW.Fneighbor.Tree.sh;
+# --------------------------------------------------------------- S08.Step02.PHYLIPNEW.Fneighbor.Tree
+
+# --------------------------------------------------------------- S08.Step03.Admixture:
+cat    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step03.Admixture/S08.Step03.s01.Admixture.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step03.Admixture/tmp.S08.Step03.s01.Admixture.sh     >    $S08_Step03_OU_PATH/S08.Step03.s01.Admixture.sh;
+cat    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step03.Admixture/S08.Step03.s02.Admixture.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step03.Admixture/tmp.S08.Step03.s02.Admixture.sh     >    $S08_Step03_OU_PATH/S08.Step03.s02.Admixture.sh;
+cat    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/py.config    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step03.Admixture/tmp.S08.Step03.s02.Admixture.py     >    $S08_Step03_OU_PATH/S08.Step03.s02.Admixture.py ;
+# --------------------------------------------------------------- S08.Step03.Admixture
+
+# --------------------------------------------------------------- S08.Step04.PCA: 
+cat    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step04.PCA/S08.Step04.PCA.header    $Main_Script_DIR/00.Bin.Cofigure.Start/.config/sh.config    $Main_Script_DIR/01.Temp.Configure/S08.Population/S08.Step04.PCA/tmp.S08.Step04.PCA.sh     >    $S08_Step02_OU_PATH/S08.Step04.PCA.sh;
+# --------------------------------------------------------------- S08.Step04.PCA
+
+# ------------------------------------------------------------------------------------------------------------------------------ S08 08.population
 echo -e "End   Time: \c";  date;  ELAPSED_TIME=$(($SECONDS - $START_TIME));  echo "$(($ELAPSED_TIME/3600)) h $((($ELAPSED_TIME/60)%60)) min $(($ELAPSED_TIME%60)) sec";
 
 # --------------------------------  main.sh

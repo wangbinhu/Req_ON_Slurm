@@ -1,0 +1,12 @@
+PLINK v2.00a2LM 64-bit Intel (26 Jun 2019)
+Options in effect:
+  --ld
+
+Hostname: software-install.cngb.sz.hpc
+Working directory: /hwfssz4/BC_PUB/Software/03.Soft_ALL/plink-2.0
+Start time: Fri Jun 28 13:20:40 2019
+
+Error: --ld requires at least 2 parameters.
+For more info, try "plink2 --help <flag name>" or "plink2 --help | more".
+
+End time: Fri Jun 28 13:20:40 2019
